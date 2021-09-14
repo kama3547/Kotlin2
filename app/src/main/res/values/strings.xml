@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Kotlin2</string>
+    <string name="car1">https://i.pinimg.com/originals/f1/c7/d7/f1c7d757fb41c4eadd1b8796b5c225b4.jpg</string>
+    <string name="car2">https://i.pinimg.com/736x/73/43/96/734396fd1dd8fb54a1462f92a6613868.jpg</string>
+    <string name="car3">https://i.pinimg.com/564x/44/60/af/4460af4f311d7c0c2df5fb53d1136552.jpg</string>
+    <string name="car4">https://i.pinimg.com/originals/d3/bb/bc/d3bbbcea35a8304407d07ce7a24a955a.jpg</string>
+    <string name="car5">https://i.pinimg.com/originals/bf/3f/07/bf3f07a11796e1d96dd89be7ce95db6f.jpg</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
