@@ -7,29 +7,31 @@ import androidx.fragment.app.activityViewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kotlin2.R
 import com.example.kotlin2.databinding.FragmentRandomBinding
+import com.example.kotlin2.utils.getEdText
+import com.example.kotlin2.utils.loadImage
 import com.squareup.picasso.Picasso
 import java.util.*
 import kotlin.collections.ArrayList
 
 class FragmentRandom : Fragment(R.layout.fragment_random) {
 
-     private val binding by viewBinding(FragmentRandomBinding::bind)
-     private  var photos: ArrayList<String> = ArrayList()
+    private val binding by viewBinding(FragmentRandomBinding::bind)
+    private var photos: ArrayList<String> = ArrayList()
     private val viewModel: GalleryViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         clickListener()
-
     }
 
     private fun clickListener() {
         binding.submitBtn.setOnClickListener {
-            val image = binding.edittext.text.toString()
+            val image = binding.edittext.getEdText()
             photos.add(image)
             binding.edittext.setText("")
         }
+
         binding.randomBtn.setOnClickListener {
             val random = Random().nextInt(photos.size)
             setImage(photos[random])
@@ -37,20 +39,18 @@ class FragmentRandom : Fragment(R.layout.fragment_random) {
     }
 
     private fun initView() {
-         photos = arrayListOf(
+        photos = arrayListOf(
             getString(R.string.car1),
             getString(R.string.car2),
             getString(R.string.car3),
             getString(R.string.car4),
-            getString(R.string.car5))
+            getString(R.string.car5)
+        )
         viewModel.list.value = photos
-
     }
 
-    private fun setImage(url:String) {
-        Picasso.get()
-            .load(url)
-            .into(binding.imageView)
+    private fun setImage(url: String) {
+        binding.imageView.loadImage(url)
     }
 }
 

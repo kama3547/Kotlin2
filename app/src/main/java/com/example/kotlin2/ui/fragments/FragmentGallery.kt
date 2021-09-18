@@ -17,7 +17,7 @@ import com.example.kotlin2.ui.adapter.RecyclerAdapter
 class FragmentGallery : Fragment(R.layout.fragment_gallery) {
 
     private val resAdapter = RecyclerAdapter()
-    private  val viewModel: GalleryViewModel by activityViewModels()
+    private val viewModel: GalleryViewModel by activityViewModels()
     private val binding by viewBinding(FragmentGalleryBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,15 +27,14 @@ class FragmentGallery : Fragment(R.layout.fragment_gallery) {
     }
 
     private fun setupRequests() {
-        viewModel.list.observe(viewLifecycleOwner,{
-            Log.e("anime", it.toString())
+        viewModel.list.observe(viewLifecycleOwner, {
             resAdapter.addList(it)
         })
     }
 
     private fun setupRecycler() {
         binding.recycler.apply {
-            layoutManager = GridLayoutManager(requireContext(),3)
+            layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = resAdapter
         }
     }

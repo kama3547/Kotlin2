@@ -7,21 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin2.databinding.ItemRecyclerBinding
 import com.squareup.picasso.Picasso
 
-class RecyclerAdapter():
+class RecyclerAdapter() :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     lateinit var binding: ItemRecyclerBinding
 
     private var list: List<String> = ArrayList()
 
-    fun addList(getList: List<String>){
+    fun addList(getList: List<String>) {
         list = getList
         notifyDataSetChanged()
     }
 
-     class ViewHolder(private val binding: ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(recyclerModel: String ) {
+    class ViewHolder(private val binding: ItemRecyclerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(string: String) {
             Picasso.get()
-                .load(recyclerModel)
+                .load(string)
                 .resize(200, 200)
                 .centerCrop()
                 .into(binding.img)
@@ -29,7 +30,7 @@ class RecyclerAdapter():
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -38,4 +39,4 @@ class RecyclerAdapter():
     }
 
     override fun getItemCount(): Int = list.size
-    }
+}
